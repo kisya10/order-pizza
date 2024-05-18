@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cart</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Your Cart</h2>
+        <ul>
+            {% for item in cart_items %}
+                <li>{{ item[0] }} - RM{{ item[1] }}</li>
+            {% endfor %}
+        </ul>
+        <h3>Total: RM{{ total_price }}</h3>
+        <form action="{{ url_for('place_order') }}" method="post">
+            <input type="submit" value="Place Order">
+        </form>
+        <a href="{{ url_for('menu') }}">Continue Shopping</a>
+    </div>
+</body>
+</html>
